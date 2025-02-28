@@ -29,9 +29,9 @@ class RecipeController
     async addRecipe(req,res)
     {
         try{
-            const {data} = req.body
-            const recipe = await recipeService.addRecipe(data)
-            res.json(recipe)
+            const {recipe} = req.body
+            const recipes = await recipeService.addRecipe(recipe)
+            res.json(recipes)
         }
         catch(e)
         {
@@ -41,11 +41,21 @@ class RecipeController
     async patchRecipe(req,res)
     {
         try{
-            
-            const {id} = req.body
-            const {data} = req.body
-            const recipe = await recipeService.patchRecipe(id,data)
-            res.json(recipe)
+            const {recipe} = req.body
+            const recipes = await recipeService.patchRecipe(recipe)
+            res.json(recipes)
+        }
+        catch(e)
+        {
+            console.log(e)
+        }
+    }
+    async deleteRecipe(req,res)
+    {
+        try{
+            const {recipe_id} = req.query
+            const recipes = await recipeService.deleteRecipe(recipe_id)
+            res.json(recipes)
         }
         catch(e)
         {

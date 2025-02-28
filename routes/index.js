@@ -1,4 +1,4 @@
-const adminController = require('../controllers/admin-controller');
+const userController = require('../controllers/user-controller');
 const commentController = require('../controllers/comment-controller');
 const ratingController = require('../controllers/rating-controller');
 const recipeConroller = require('../controllers/recipe-conroller');
@@ -11,13 +11,17 @@ const route = Router()
 route.get('/recipes',recipeConroller.getRecipes)
 route.get('/recipe/:id',recipeConroller.getRecipe)
 route.post('/recipe',recipeConroller.addRecipe)
+route.delete('/recipe',recipeConroller.deleteRecipe)
 route.patch('/recipe',recipeConroller.patchRecipe)
 
-route.post("/auth",adminController.login)
+route.post("/registration",userController.registration)
+route.post("/login",userController.login)
 
 route.post("/rating",ratingController.addRating)
+route.get("/rating",ratingController.getRating)
 
-route.post('/comment',commentController.addComment)
+route.post('/comments',commentController.addComment)
+route.get('/comments/:id',commentController.getComments)
 
 
 
