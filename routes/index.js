@@ -2,6 +2,7 @@ const userController = require('../controllers/user-controller');
 const commentController = require('../controllers/comment-controller');
 const ratingController = require('../controllers/rating-controller');
 const recipeConroller = require('../controllers/recipe-conroller');
+const savedController = require('../controllers/saved-controller');
 
 
 const Router = require('express').Router;
@@ -22,6 +23,9 @@ route.get("/rating",ratingController.getRating)
 
 route.post('/comments',commentController.addComment)
 route.get('/comments/:id',commentController.getComments)
+
+route.get('/saved',savedController.getSaved)
+route.post('/saved',savedController.addSaved)
 
 
 
